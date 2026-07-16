@@ -1,6 +1,6 @@
 // Run this in the Chrome DevTools console on the correspondent's the news site author page.
 //
-//   1. Be on https://www.the news site/people/PERSON_ID/author-slug
+//   1. Be on the author's index page on the site you're archiving
 //   2. ⌘⌥J to open the console
 //   3. If Chrome says "pasting is blocked", type:  allow pasting  <Enter>  first
 //   4. Paste this, hit Enter, and leave the tab in the foreground

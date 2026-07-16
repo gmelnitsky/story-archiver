@@ -3,7 +3,6 @@
 Build the local browsable archive from data/stories/*.json.
 
     python3 scrape/build_site.py
-    python3 scrape/serve.py        # then open http://localhost:8123
 
 Story metadata is inlined into index.html so the page needs no network at all.
 Transcripts are fetched on demand from transcripts/ — they're big and most

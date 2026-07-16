@@ -29,13 +29,12 @@ collect-urls.js   → scrape.py       → build_site.py        → build_portabl
    headline and the tape — so the audio *is* the story, and it gets saved rather
    than merely linked.
 3. **`build_site.py`** — assembles a clean, browsable local website over
-   everything (`serve.py` serves it on her machine to preview).
+   everything, entirely on her own machine.
 4. **`build_portable.py`** — the part I'm proudest of: it folds the *entire*
    archive — every story, transcript, and asset — into a **single HTML file**.
    Browsers won't let a `file://` page load sidecar files, so everything is
    embedded inline. The result is one document she can double-click and read
    forever, offline, even if the original site disappears.
-5. **`dashboard.py`** — a live progress view while it runs.
 
 ## Why build it this way
 
@@ -54,7 +53,6 @@ collect-urls.js   → scrape.py       → build_site.py        → build_portabl
 # 2. Point the config at the right site/author, then:
 python3 scrape.py                 # download everything (resumable)
 python3 build_site.py             # build the browsable local site
-python3 serve.py                  # preview locally
 python3 build_portable.py --zip   # produce the single-file offline archive
 ```
 
