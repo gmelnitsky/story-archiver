@@ -1,0 +1,16 @@
+# downloaded content — never commit (publisher copyrighted)
+data/
+export/
+audio/
+raw/
+transcripts/
+site/
+urls.json
+*.mp3
+*.zip
+
+# python / os
+__pycache__/
+*.pyc
+.venv/
+.DS_Store
