@@ -1,5 +1,7 @@
 # Story Archiver
 
+[![CI](https://github.com/gmelnitsky/story-archiver/actions/workflows/ci.yml/badge.svg)](https://github.com/gmelnitsky/story-archiver/actions/workflows/ci.yml)
+
 A retiring journalist wanted to keep her life's work — a career's worth of
 published stories, audio, and transcripts — before she stepped away and lost
 easy access to it. So I built her a way to save all of it into a single personal
@@ -55,6 +57,39 @@ python3 scrape.py                 # download everything (resumable)
 python3 build_site.py             # build the browsable local site
 python3 build_portable.py --zip   # produce the single-file offline archive
 ```
+
+## Tests
+
+The suite runs entirely offline on tiny inline HTML/JSON fixtures — no network,
+no live site, and no copyrighted content (the archive itself is never committed).
+It covers the pure, load-bearing logic:
+
+- **Stable IDs / safe filenames** (`scrape.story_id`) — the same story always
+  maps to the same id regardless of its trailing slug (this is what makes the
+  scraper's resume-on-restart correct), and any un-dated URL still yields a
+  bounded, sanitized filename.
+- **Content extraction** (`scrape.parse_story` / `parse_transcript`) — prefer
+  structured `ld+json` metadata over page markup, strip page furniture, dedupe
+  bylines in order, resolve the *named* transcript link rather than the bare nav
+  one, and pick the transcript container that actually holds the text.
+- **Site assembly** (`build_site`) — stories are ordered newest-first, a
+  locally-saved mp3 is preferred over the remote URL, and the story index is
+  inlined into `index.html` so the page renders with no network.
+- **The portable bundle** (`build_portable`) — the core promise: exactly one
+  self-contained HTML file, with story text and transcripts embedded inline (a
+  `file://` page can't fetch sidecars), newest-first ordering, and audio bundled
+  alongside as a relative link.
+
+Run them:
+
+```sh
+python3 -m venv .venv
+.venv/bin/pip install -r requirements-dev.txt
+.venv/bin/pytest -q
+```
+
+CI (GitHub Actions) runs the same suite on Python 3.11, 3.12, and 3.13 on every
+push and pull request.
 
 ## Tech
 

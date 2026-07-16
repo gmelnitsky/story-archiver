@@ -1,0 +1,9 @@
+# Development / test dependencies.
+# The runtime scraper depends on requests + BeautifulSoup, and the site markup
+# must be parsed with html5lib (see the note in scrape.py — the stdlib parser
+# mangles the source's unclosed tags). The parsing tests exercise that path,
+# so these are needed to run the suite as well.
+requests
+beautifulsoup4
+html5lib
+pytest
