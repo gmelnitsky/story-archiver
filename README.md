@@ -25,9 +25,9 @@ collect-urls.js   → scrape.py       → build_site.py        → build_portabl
 1. **`collect-urls.js`** — run in the browser on her author page. It scrolls and
    collects the links to her stories *at normal reading pace, in the browser* —
    no pounding on anyone's server — and saves them to a file.
-2. **`scrape.py`** — downloads each story to her disk: the text, the audio, and
-   the transcript where one exists. Resumable, so re-running only fetches what's
-   missing. For her earliest pieces there's barely any web text — just a
+2. **`scrape.py`** — captures each story (all publicly available for download) to
+   her disk: the text, the audio, and the transcript where one exists. Resumable,
+   so re-running only fetches what's missing. For her earliest pieces there's barely any web text — just a
    headline and the tape — so the audio *is* the story, and it gets saved rather
    than merely linked.
 3. **`build_site.py`** — assembles a clean, browsable local website over
